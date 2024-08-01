@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
 
@@ -27,8 +28,10 @@ const Signup = () => {
            alert(result.message);
       }
   return (
-    <div className='w-full h-screen flex items-center justify-center '>
+    <div className='w-full  h-screen flex items-center justify-center '>
     <form  className='flex flex-col gap-2  shadow-md shadow-slate-600 rounded w-1/4 p-4' onSubmit={handleSubmit}>
+      <h1 className='text-center font-semibold text-3xl'>SIGN UP</h1>
+      <hr className='h-[2px] bg-black rounded' />
         <label className='font-medium' for="username">Username:</label>
         <input className='px-2 py-1 rounded border border-gray-500 focus:border-2 focus:border-green-500' onChange={handleChange} value={userData.username} type="text" id="username" name="username" required/>
         <label className='font-medium' for="email">Email:</label>
@@ -36,7 +39,9 @@ const Signup = () => {
         <label className='font-medium' for="password">Password:</label>
         <input className='px-2 py-1 rounded border border-gray-500 focus:border-2 focus:border-green-500' onChange={handleChange} value={userData.password} type="password" id="password" name="password" required/>
         <button className='bg-green-500 hover:bg-green-700 text-white font-medium py-2 rounded my-4'>Sign Up</button>
+        <p className='text-center'>Already have an account ? <Link to='/login' className='font-medium text-blue-600 cursor-pointer'>Login</Link></p>
     </form>
+
 </div>
   )
 }

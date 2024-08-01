@@ -1,8 +1,9 @@
 import { Router } from "express";
 const router = Router();
-import UserModal from '../Models/userModal.js'
 import {signup} from '../AuthControllers/AuthController.js'
+import {login} from '../AuthControllers/AuthController.js'
 
 router.post('/signup',signup)
+router.post('/login',login)
 
 export default router;
