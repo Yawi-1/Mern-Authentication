@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+
 
 const Signup = () => {
 
+ const navigate = useNavigate();
      const [userData,setUserData] = useState({
         username: "",
         email: "",
@@ -25,7 +27,8 @@ const Signup = () => {
                 body : JSON.stringify(userData),
            });
            const result = await response.json();
-           alert(result.message);
+           navigate('/');
+          //  alert(result.message);
       }
   return (
     <div className='w-full  h-screen flex items-center justify-center '>
