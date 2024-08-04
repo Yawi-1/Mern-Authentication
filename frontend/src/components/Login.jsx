@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+
 
 const Login = () => {
   const [userData,setUserData] = useState({
@@ -7,6 +8,7 @@ const Login = () => {
     password: "",
  });
 
+ const navigate = useNavigate();
  const handleChange = (e)=>{
     const {name,value} = e.target;
    setUserData({...userData,[name]:value});
@@ -23,7 +25,12 @@ const Login = () => {
             body : JSON.stringify(userData),
        });
        const result = await response.json();
-       alert(result.message);
+       const {token,email,success} = result;
+       if(success){
+        localStorage.setItem('token',token);
+        localStorage.setItem('loggedInUser',email);
+        navigate('/');
+       }
   }
   return (
     <div className='w-full  h-screen flex items-center justify-center '>
