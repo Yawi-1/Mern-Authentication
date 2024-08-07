@@ -6,7 +6,9 @@ const Home = () => {
   const logout = ()=>{
     localStorage.removeItem('token')
     localStorage.removeItem('loggedInUser')
-    navigate('/login')
+    setTimeout(()=>{
+      navigate('/login')
+    },1000)
 
   }
   return (

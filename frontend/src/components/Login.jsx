@@ -15,22 +15,29 @@ const Login = () => {
  }
 
   const handleSubmit = async (e)=>{
-    const url = 'http://localhost:3000/auth/login';
-       e.preventDefault();
-       const response = await fetch(url,{
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            },
-            body : JSON.stringify(userData),
-       });
-       const result = await response.json();
-       const {token,email,success} = result;
-       if(success){
-        localStorage.setItem('token',token);
-        localStorage.setItem('loggedInUser',email);
-        navigate('/');
-       }
+    try {
+      
+      const url = 'http://localhost:3000/auth/login';
+      e.preventDefault();
+      const response = await fetch(url,{
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/json',
+           },
+           body : JSON.stringify(userData),
+      });
+      const result = await response.json();
+      const {token,email,success} = result;
+      if(success){
+       localStorage.setItem('token',token);
+       localStorage.setItem('loggedInUser',email);
+       navigate('/');
+      }
+      alert(result.message);
+    } catch (error) {
+       console.log("Invalid Email",error)
+    }
+   
   }
   return (
     <div className='w-full  h-screen flex items-center justify-center '>
