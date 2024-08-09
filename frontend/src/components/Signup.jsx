@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const Signup = () => {
@@ -28,7 +29,10 @@ const Signup = () => {
            });
            const result = await response.json();
            navigate('/');
-          //  alert(result.message);
+           toast.info(result.message,{
+            position: "bottom-right",
+            theme:'dark'
+           });
       }
   return (
     <div className='w-full  h-screen flex items-center justify-center '>
@@ -42,7 +46,7 @@ const Signup = () => {
         <label className='font-medium' for="password">Password:</label>
         <input className='px-2 py-1 rounded border border-gray-500 focus:border-2 focus:border-green-500' onChange={handleChange} value={userData.password} type="password" id="password" name="password" required/>
         <button className='bg-green-500 hover:bg-green-700 text-white font-medium py-2 rounded my-4'>Sign Up</button>
-        <p className='text-center'>Already have an account ? <Link to='/login' className='font-medium text-blue-600 cursor-pointer'>Login</Link></p>
+        <p className='text-center'>Already have an account ? <Link to='/' className='font-medium text-blue-600 cursor-pointer'>Login</Link></p>
     </form>
 
 </div>

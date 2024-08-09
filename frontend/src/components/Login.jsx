@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { Link,useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 
 const Login = () => {
@@ -31,11 +32,14 @@ const Login = () => {
       if(success){
        localStorage.setItem('token',token);
        localStorage.setItem('loggedInUser',email);
-       navigate('/');
+       navigate('/home');
       }
-      alert(result.message);
+      toast.info(result.message,{
+        position:'bottom-right',
+        theme:'dark',
+      });
     } catch (error) {
-       console.log("Invalid Email",error)
+       console.log("Log In Error: ",error)
     }
    
   }

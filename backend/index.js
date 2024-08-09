@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors'
 import 'dotenv/config';
 import router from './Routes/AuthRouter.js'
-import { ProductRouter } from './Routes/ProductsRoute.js';
+import { UserRouter } from './Routes/UserRoute.js';
 const PORT = process.env.PORT || 8000;
 app.use(cors())
 app.use(express.json())
@@ -14,7 +14,9 @@ app.get('/',(req,res)=>{
     res.send('Hello World')
 })
 app.use('/auth',router);
-app.use('/products',ProductRouter);
+app.use('/users',UserRouter);
+
+
 
 
 
